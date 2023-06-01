@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from sklearn.model_selection import StratifiedKFold, KFold
 from sklearn.metrics import f1_score, accuracy_score, classification_report
 
@@ -12,7 +13,7 @@ def cross_validation(X,y,model):
         y_pred = model.predict(X_test)
         f1_macro = f1_score(y_test, y_pred, average = 'macro')
         f1.append(f1_macro)
-        print(classification_report(y_test, y_pred))
+        print(classification_report(y_test, y_pred),np.mean(f1_macro))
     return f1
 
 def freq_encoding(data, cat_feat):
